@@ -20,6 +20,7 @@ const Home = () => {
         <Link to="/sunamoto">sunamoto</Link>
         <br />
         <Link to="/kawanishi">kawanishi</Link>
+        <br />
         <button onClick={handleLogout}>ログアウト</button>
       </div>
     );

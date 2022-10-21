@@ -33,6 +33,9 @@ const SignUp = () => {
         <div>
           <button>登録</button>
         </div>
+        <div>
+          登録済みの方は<Link to="/login">こちら</Link>から
+        </div>
       </form>
     </div>
   );
