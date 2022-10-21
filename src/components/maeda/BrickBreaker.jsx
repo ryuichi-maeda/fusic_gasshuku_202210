@@ -8,7 +8,7 @@ import Enemies from "./Enemies"
 import { Center, OrbitControls, Text, Text3D } from "@react-three/drei"
 
 
-export default function PinBall() {
+export default function BrickBreaker() {
     const [ready, setReady] = useState(false)
     const [gameState, setGameState] = useState(["START", "START"])
 
