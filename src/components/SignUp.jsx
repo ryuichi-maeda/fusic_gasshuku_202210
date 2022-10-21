@@ -1,16 +1,26 @@
 import auth from "../firebase";
 import { useAuthContext } from "../context/AuthContext";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
-    auth.createUserWithEmailAndPassword(email.value, password.value);
+    try {
+      await auth.createUserWithEmailAndPassword(email.value, password.value);
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <div>
       <h1>ユーザー登録</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>メールアドレス</label>
