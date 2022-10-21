@@ -14,7 +14,7 @@ export const ToDo = (props) => {
           "has-text-grey-light": todo.done,
         })}
       >
-        {todo.text}
+        {todo}
       </span>
     </label>
   );
