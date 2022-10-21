@@ -1,5 +1,5 @@
 import auth from "../firebase";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
 const Home = () => {
@@ -15,7 +15,11 @@ const Home = () => {
   } else {
     return (
       <div>
-        <h1>ホームページ</h1>
+        <Link to="/maeda">maeda</Link>
+        <br />
+        <Link to="/sunamoto">sunamoto</Link>
+        <br />
+        <Link to="/kawanishi">kawanishi</Link>
         <button onClick={handleLogout}>ログアウト</button>
       </div>
     );

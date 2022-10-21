@@ -4,9 +4,33 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import { AuthProvider } from "./context/AuthContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/maeda",
+      element: <Home />,
+    },
+    {
+      path: "/sunamoto",
+      element: <Home />,
+    },
+    {
+      path: "/kawanishi",
+      element: <Home />,
+    },
+  ]);
   return (
     <AuthProvider>
       <div style={{ margin: "2em" }}>
