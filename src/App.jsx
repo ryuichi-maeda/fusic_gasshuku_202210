@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import ToDoApp from "./components/ToDoApp";
 import { AuthProvider } from "./context/AuthContext";
 import {
   createBrowserRouter,
@@ -39,9 +40,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/3d" element={<Maeda />} />
-            <Route path="/sunamoto" element={<Home />} />
+            <Route path="/brick-breaker" element={<Maeda />} />
             <Route path="/kawanishi" element={<Home />} />
+            <Route path="toDoApp" element={<ToDoApp />} />
           </Routes>
         </BrowserRouter>
       </div>
