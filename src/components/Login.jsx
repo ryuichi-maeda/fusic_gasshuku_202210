@@ -1,17 +1,27 @@
 import auth from "../firebase";
 import SignUp from "./SignUp";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
-    auth.signInWithEmailAndPassword(email.value, password.value);
+    try {
+      await auth.signInWithEmailAndPassword(email.value, password.value);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
   };
 
   return (
     <div>
       <h1>ログイン</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>メールアドレス</label>
