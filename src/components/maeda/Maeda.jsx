@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-import PinBall from "./PinBall";
+import BrickBreaker from "./BrickBreaker";
 
 export default function Maeda() {
     const user = useAuthContext()
@@ -9,7 +9,7 @@ export default function Maeda() {
     return user.user ? (
         <div className="maeda">
             <Canvas camera={{ position: [0, 10, 22], fov: 50 }}>
-                <PinBall />
+                <BrickBreaker />
             </Canvas>
         </div>
     ) : (
