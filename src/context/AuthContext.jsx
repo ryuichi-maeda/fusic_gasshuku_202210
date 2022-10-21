@@ -9,15 +9,17 @@ export function useAuthContext() {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const value = {
     user,
+    loading,
   };
 
   useEffect(() => {
     const unSubscribed = auth.onAuthStateChanged((user) => {
-      console.log(user);
       setUser(user);
+      setLoading(false);
     });
     return () => {
       unSubscribed();
