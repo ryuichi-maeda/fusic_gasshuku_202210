@@ -2,6 +2,20 @@ import auth from "../firebase";
 import SignUp from "./SignUp";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { teal } from "@mui/material/colors";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,26 +33,59 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>ログイン</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>メールアドレス</label>
-          <input name="email" type="email" placeholder="email" />
-        </div>
-        <div>
-          <label>パスワード</label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button>ログイン</button>
-        </div>
-        <div>
-          ユーザー登録は<Link to="/signup">こちら</Link>から
-        </div>
-      </form>
-    </div>
+    <Grid>
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          height: "70vh",
+          width: "280px",
+          m: "20px auto",
+        }}
+      >
+        <Grid
+          container
+          direction="column"
+          justifyContent="flex-start" //多分、デフォルトflex-startなので省略できる。
+          alignItems="center"
+        >
+          <Avatar sx={{ bgcolor: teal[400] }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant={"h5"} sx={{ m: "30px" }}>
+            Sign In
+          </Typography>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </Grid>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="email"
+            name="email"
+            variant="standard"
+            fullWidth
+            required
+          />
+          <TextField
+            type="password"
+            label="password"
+            variant="standard"
+            name="password"
+            fullWidth
+            required
+          />
+          {/* ラベルとチェックボックス */}
+          <Box mt={3}>
+            <Button type="submit" color="primary" variant="contained" fullWidth>
+              サインイン
+            </Button>
+            <Typography variant="caption" display="block">
+              アカウントを持っていますか？
+              <Link to="/signup">アカウントを作成</Link>
+            </Typography>
+          </Box>
+        </form>
+      </Paper>
+    </Grid>
   );
 };
 
