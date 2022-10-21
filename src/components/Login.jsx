@@ -1,25 +1,26 @@
 import auth from "../firebase";
-import { useAuthContext } from "../context/AuthContext";
-import { useState } from "react";
+import SignUp from "./SignUp";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const SignUp = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = e.target.elements;
     try {
-      await auth.createUserWithEmailAndPassword(email.value, password.value);
+      await auth.signInWithEmailAndPassword(email.value, password.value);
       navigate("/");
     } catch (error) {
+      console.log(error);
       setError(error.message);
     }
   };
 
   return (
     <div>
-      <h1>ユーザー登録</h1>
+      <h1>ログイン</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
@@ -31,14 +32,14 @@ const SignUp = () => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button>登録</button>
+          <button>ログイン</button>
         </div>
         <div>
-          登録済みの方は<Link to="/login">こちら</Link>から
+          ユーザー登録は<Link to="/signup">こちら</Link>から
         </div>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;

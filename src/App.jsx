@@ -1,6 +1,15 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './components/Home';
+import "./App.css";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import { AuthProvider } from "./context/AuthContext";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import Maeda from './components/maeda/Maeda';
 
 function App() {
@@ -21,11 +30,19 @@ function App() {
       path: "/kawanishi",
       element: <Home />,
     },
-  ])
+  ]);
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <AuthProvider>
+      <div style={{ margin: "2em" }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 
