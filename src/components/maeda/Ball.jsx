@@ -1,15 +1,13 @@
 import { usePlane, useSphere } from "@react-three/cannon"
 import { useFrame, useThree } from "@react-three/fiber"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 
-export default function Ball({ args = [0.5, 32, 32], setReady, setGameState }) {
+export default function Ball({ args = [0.5, 32, 32], setReady, setGameState, position, life, setLife }) {
     const { viewport } = useThree()
     const [ref, api] = useSphere(() => ({
         args: [0.5],
-        mass: 1
+        mass: 1,
+        position: position,
     }))
-    const [life, setLife] = useState(3)
 
     // Invisible plane, if hit it respawns the ball
     usePlane(() => ({
@@ -28,15 +26,16 @@ export default function Ball({ args = [0.5, 32, 32], setReady, setGameState }) {
         },
     }))
     useFrame(() => {
-        if (life == 0) {
-            // setReady(false)
+        if (life <= 0) {
+            setReady(false)
+            setLife(3)
             setGameState(["OVER", "RESTART"])
         }
     })
     return (
-        <mesh ref={ref}>
-            <sphereGeometry args={args} />
-            <meshStandardMaterial />
+        <mesh ref={ref} castShadow receiveShadow>
+            <sphereGeometry args={args} position={position} />
+            <meshStandardMaterial color="#ea7600" />
         </mesh>
     )
 }

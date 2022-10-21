@@ -1,15 +1,18 @@
 import { Canvas } from "@react-three/fiber";
-import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 import PinBall from "./PinBall";
-import Tutorial from "./Tutorial/Tutorial";
 
 export default function Maeda() {
+    const user = useAuthContext()
 
-    return (
+    return user.user ? (
         <div className="maeda">
             <Canvas camera={{ position: [0, 10, 22], fov: 50 }}>
                 <PinBall />
             </Canvas>
         </div>
+    ) : (
+        <Navigate to="/login" />
     )
 }

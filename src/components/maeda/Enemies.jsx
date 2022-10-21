@@ -2,28 +2,35 @@ import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
 import Enemy from "./Enemy";
 
-export default function Enemies({ setReady, setGameState }) {
-    const [enemyNum, setEnemyNum] = useState(100)
+export default function Enemies({ setReady, setGameState, setLife }) {
+    const [enemyNum, setEnemyNum] = useState(10)
     const [clear, setClear] = useState(false)
 
     useFrame(() => {
         if (enemyNum == 0 && !clear) {
             setClear(true)
             setReady(false)
+            setEnemyNum(10)
+            setLife(3)
             setGameState(["CLEAR !!", "RESTART"])
         }
     })
+
+    // ランキング作成用にデータ保存
+    // const user = useAuthContext()
+
+    // [-9 ~ 9, -5 ~ 7, 0]
     return (
         <>
-            <Enemy color="orange" position={[5, 1, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="orange" position={[3, 1.5, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="orange" position={[1, 3, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="orange" position={[7, 4, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="hotpink" position={[-10, 11, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="hotpink" position={[-8, 9, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="hotpink" position={[-6, 5, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="hotpink" position={[-4, 4, 0]} setEnemyNum={setEnemyNum} />
-            <Enemy color="hotpink" position={[-2, 11, 0]} setEnemyNum={setEnemyNum} />
+            {(() => {
+                const items = []
+                for (let i = 0; i < 10; i++) {
+                    let x = Math.floor(Math.random() * 19) - 9
+                    let y = Math.floor(Math.random() * 13) - 5
+                    items.push(<Enemy key={i} color="blue" position={[x, y, 0]} setEnemyNum={setEnemyNum} />)
+                }
+                return items
+            })()}
         </>
     )
 }
