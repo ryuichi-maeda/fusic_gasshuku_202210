@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import ToDoApp from "./components/ToDoApp";
 import { AuthProvider } from "./context/AuthContext";
 import {
   createBrowserRouter,
@@ -39,6 +40,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="toDoApp" element={<ToDoApp />} />
           </Routes>
         </BrowserRouter>
       </div>
