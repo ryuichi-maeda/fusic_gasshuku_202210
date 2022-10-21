@@ -1,6 +1,7 @@
 import auth from "../firebase";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import ToDoApp from "./ToDoApp";
 import {
   Avatar,
   Box,
@@ -59,7 +60,7 @@ const Home = () => {
             </Link>
           </Box>
           <Box mt={3}>
-            <Link to="/sunamoto">
+            <Link to="/toDoApp">
               <Button
                 type="submit"
                 color="secondary"
