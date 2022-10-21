@@ -81,7 +81,7 @@ const Login = () => {
             </Button>
             <Typography variant="caption" display="block">
               アカウントを持っていますか？
-              <Link to="/signup">アカウントを作成</Link>
+              <Link to="/Signup">アカウントを作成</Link>
             </Typography>
           </Box>
         </form>
