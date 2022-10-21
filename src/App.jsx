@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -12,6 +11,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Maeda from './components/maeda/Maeda';
 
 function App() {
   const router = createBrowserRouter([
@@ -20,8 +20,8 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/maeda",
-      element: <Home />,
+      path: "/3d",
+      element: <Maeda />,
     },
     {
       path: "/sunamoto",
@@ -40,6 +40,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/brick-breaker" element={<Maeda />} />
+            <Route path="/kawanishi" element={<Home />} />
             <Route path="toDoApp" element={<ToDoApp />} />
           </Routes>
         </BrowserRouter>
