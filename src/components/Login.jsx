@@ -6,11 +6,8 @@ import {
   Avatar,
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
   Grid,
   Paper,
-  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -53,9 +50,13 @@ const Login = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant={"h5"} sx={{ m: "30px" }}>
-            Sign In
+            ログイン
           </Typography>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && (
+            <p style={{ color: "red" }}>
+              {"メールアドレスまたはパスワードが正しくありません"}
+            </p>
+          )}
         </Grid>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -76,7 +77,7 @@ const Login = () => {
           {/* ラベルとチェックボックス */}
           <Box mt={3}>
             <Button type="submit" color="primary" variant="contained" fullWidth>
-              サインイン
+              ログイン
             </Button>
             <Typography variant="caption" display="block">
               アカウントを持っていますか？
