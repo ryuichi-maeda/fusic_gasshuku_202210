@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "bulma/css/bulma.css";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
+var db = getFirestore();
 
 export const InputToDo = (props) => {
   const [text, setText] = useState("");
@@ -12,6 +16,9 @@ export const InputToDo = (props) => {
         return;
       }
       props.onAdd(text);
+      const docRef = addDoc(collection(db, "todos"), {
+        todo: text,
+      });
       setText("");
     }
   };
