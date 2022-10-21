@@ -39,6 +39,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/3d" element={<Maeda />} />
+            <Route path="/sunamoto" element={<Home />} />
+            <Route path="/kawanishi" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </div>
