@@ -1,6 +1,7 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/Home';
+import Maeda from './components/maeda/Maeda';
 
 function App() {
   const router = createBrowserRouter([
@@ -9,8 +10,8 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/maeda",
-      element: <Home />,
+      path: "/3d",
+      element: <Maeda />,
     },
     {
       path: "/sunamoto",
